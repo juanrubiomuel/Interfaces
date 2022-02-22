@@ -8,13 +8,18 @@ package main;
 
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
  * @author juanr
  */
 public class Inicia extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form Inicia
@@ -41,10 +46,6 @@ public class Inicia extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtN = new javax.swing.JTextField();
-        txtC = new javax.swing.JPasswordField();
         inicBoton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtInicia = new javax.swing.JLabel();
@@ -56,12 +57,6 @@ public class Inicia extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel1.setText("INICIAR SESIÓN");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Nombre usuario :");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Contraseña : ");
 
         inicBoton.setBackground(new java.awt.Color(0, 204, 255));
         inicBoton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -96,15 +91,6 @@ public class Inicia extends javax.swing.JFrame {
                         .addGap(140, 140, 140)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtN)
-                            .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
@@ -113,7 +99,7 @@ public class Inicia extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(inicBoton)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,17 +108,9 @@ public class Inicia extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(66, 66, 66)
                 .addComponent(inicBoton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtInicia)
@@ -143,17 +121,25 @@ public class Inicia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicBotonActionPerformed
+            String nombre=JOptionPane.showInputDialog("Introduce tu nombre de usuario por favor : ");
+            while(nombre.isEmpty()){
+                nombre=JOptionPane.showInputDialog("Introduce un nombre de usuario valido por favor : ");
+            }
+            JPasswordField pwd = new JPasswordField(10);
+            int action = JOptionPane.showConfirmDialog(null, pwd,"Introduce tu contraseña : ",JOptionPane.OK_CANCEL_OPTION);
+            while(pwd.toString().trim().isEmpty()){
+                action = JOptionPane.showConfirmDialog(null, pwd,"Introduce una contraseña valida : ",JOptionPane.OK_CANCEL_OPTION);
+            }
+             
+            
+            JOptionPane.showMessageDialog(null, "Entrando");
+            this.setVisible(false);
+            TReserva i = new TReserva();
             
        
-        if(txtN.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Campo usuario vacio");
-        }else if(txtC.getPassword().toString().trim().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Campo contraseña vacio");
-         }else{
-             JOptionPane.showMessageDialog(null, "Entrando");
-             this.setVisible(false);
-            TReserva i = new TReserva();
-         }
+    
+             
+        
             
            
            
@@ -206,11 +192,9 @@ public class Inicia extends javax.swing.JFrame {
     private javax.swing.JButton inicBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField txtC;
     private javax.swing.JLabel txtInicia;
-    private javax.swing.JTextField txtN;
     // End of variables declaration//GEN-END:variables
+
+ 
 }
